@@ -1,0 +1,31 @@
+# Кэш
+
+.DS_Store
+
+__pycache__/
+*.pyc
+
+error.log
+
+.idea/
+.vscode/
+
+node_modules/
+package-lock.json
+dist/
+build/
+
+# Ключи и настройки
+
+# Виртуальное окружение
+
+flask/
+
+# Данные
+
+/load/
+
+# Авторские права
+
+*.otf
+*.ttf
