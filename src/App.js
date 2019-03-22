@@ -1,12 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import HEREMap from 'react-here-maps'
+import {appId, appCode} from './keys'
+
+import Map from './Map'
 
 
 export default class App extends React.Component {
 	render() {
+		console.log(appId, appCode)
 		return (
-			<div>/</div>
+			<Map app_id={ appId } app_code={ appCode } />
 		)
 	}
 }
