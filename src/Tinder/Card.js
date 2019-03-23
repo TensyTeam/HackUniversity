@@ -9,6 +9,7 @@ class Card extends React.Component {
     return (
         <animated.div
             key={i}
+            className="card_block"
             style={{ transform: interpolate( [x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)}}
         >
             <animated.div

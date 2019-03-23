@@ -15,7 +15,7 @@ body {
     height: 100%;
 }
 
-#root>div {
+#root .card_block {
     position: absolute;
     width: 100vw;
     height: 100vh;
