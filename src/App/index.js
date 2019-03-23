@@ -12,7 +12,7 @@ import Add from '../Add'
 export default class App extends React.Component {
 	state = {
 		maps: false,
-		weather: false,
+		weather: true,
 	}
 
 	render() {
