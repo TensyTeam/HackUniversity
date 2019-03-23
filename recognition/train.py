@@ -18,10 +18,16 @@ from sklearn.model_selection import train_test_split
 data_train = pd.read_csv('../input/fashion-mnist_train.csv')
 data_test = pd.read_csv('../input/fashion-mnist_test.csv')
 
-# print(data_train.head())
-# print(data_train.shape)
-data_train = data_train[data_train.label != 8]
-# print(data_train.shape)
+print(data_train.shape)
+data_train = data_train[(data_train.label != 5) & (data_train.label != 7) & (data_train.label != 8) & (data_train.label != 9)]
+data_test = data_test[(data_test.label != 5) & (data_test.label != 7) & (data_test.label != 8) & (data_test.label != 9)]
+# data_train[data_train.label == 6].label = 5
+# data_test[data_test.label == 6].label = 5
+data_train['label'] = data_train['label'].map({0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 6: 5})
+data_test['label'] = data_test['label'].map({0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 6: 5})
+
+print(data_train.shape)
+print(data_train.head())
 
 img_rows, img_cols = 28, 28
 input_shape = (img_rows, img_cols, 1)
@@ -46,8 +52,8 @@ X_train /= 255
 X_test /= 255
 X_val /= 255
 batch_size = 256
-num_classes = 10
-epochs = 7 # 30
+num_classes = 6 # 10
+epochs = 30
 
 img_rows, img_cols = 28, 28
 
@@ -81,4 +87,4 @@ score = model.evaluate(X_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
-model.save('../input/model.txt')
+model.save('../model.txt')
