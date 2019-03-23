@@ -5,14 +5,14 @@ import { getWeather } from '../func/methods'
 import './style.css'
 
 import Map from '../Map'
-import Tinder from '../Tinder'
+import Tinder from '../Tinder/Tinder'
 import Add from '../Add'
 
 
 export default class App extends React.Component {
 	state = {
 		maps: false,
-		weather: true,
+		weather: false,
 	}
 
 	render() {
