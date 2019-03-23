@@ -2,3 +2,15 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+
+#comp {
+	width: 60%;
+	margin-left: 20%;
+}
+
+@media all and (max-width: 600px) {
+	#comp {
+		width: 95%;
+		margin-left: 2.5%;
+	}
+}

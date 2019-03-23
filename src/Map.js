@@ -15,7 +15,7 @@ export default class Map extends React.Component {
 				lng: props.lng,
 			},
 			zoom: props.zoom,
-			theme: props.theme,
+			// theme: props.theme,
 			// style: props.style,
 		}
 	}

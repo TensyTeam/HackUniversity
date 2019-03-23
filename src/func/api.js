@@ -8,7 +8,7 @@ import { appId, appCode } from '../keys.js'
 // }
 
 function serverRequest() {
-	const link = 'https://weather.api.here.com/weather/1.0/report.json?product=observation&name=Saint-Petersburg&app_id=' + appId + '&app_code=' + appCode + `&jsoncallback=myCallbackFunction`
+	const link = 'https://weather.api.here.com/weather/1.0/report.json?product=observation&name=Saint-Petersburg&app_id=' + appId + '&app_code=' + appCode // + `&jsoncallback=myCallbackFunction`
 
 	// let config = {
 	// 	baseURL: 'https://weather.api.here.com/weather/1.0/',
@@ -34,9 +34,9 @@ function serverRequest() {
 
 
 
-	// // const la = axios.get(link)
-	// console.log(la)
-	// return la
+	const la = axios.get(link)
+	console.log(la)
+	return la
 
 
 
