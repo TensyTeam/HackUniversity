@@ -1,23 +1,24 @@
 import axios from 'axios'
 
 import { appId, appCode } from '../keys.js'
+// import console = require('console');
 
 // function myCallbackFunction(e) {
 // 	console.log(e)
 // }
 
 function serverRequest() {
-	const link = 'https://weather.api.here.com/weather/1.0/report.json?product=observation&name=Saint-Petersburg&app_id=' + appId + '&app_code=' + appCode + `&jsoncallback=${e=>{console.log(e)}}`
+	const link = 'https://weather.api.here.com/weather/1.0/report.json?product=observation&name=Saint-Petersburg&app_id=' + appId + '&app_code=' + appCode + `&jsoncallback=myCallbackFunction`
 
 	// let config = {
-	// 	// baseURL: 'https://weather.api.here.com/weather/1.0/',
-	// 	// proxyHeaders: false,
-	// 	// credentials: false,
+	// 	baseURL: 'https://weather.api.here.com/weather/1.0/',
+	// 	proxyHeaders: false,
+	// 	credentials: false,
 	// 	// headers: {'Access-Control-Allow-Origin': '*'},
 	// 	// headers: {
 	// 	// 	'Content-Type': 'application/x-www-form-urlencoded'
 	// 	//   }
-	// 	mode: 'no-cors',
+	// 	// mode: 'no-cors',
 	// }
 
 // 	// return axios({
@@ -30,9 +31,15 @@ function serverRequest() {
 // // axios.defaults.headers.common['Access-Control-Request-Headers'] = null
 // // axios.defaults.headers.common['Access-Control-Request-Method'] = null
 	// const la = axios.get(link, config)
-	const la = axios.get(link)
-	console.log(la)
-	return la
+
+
+
+	// // const la = axios.get(link)
+	// console.log(la)
+	// return la
+
+
+
 
 // return new Promise(function(resolve, reject) {
 // 	const request = require("request");
@@ -50,6 +57,8 @@ function serverRequest() {
 // 		}
 // 	});
 // });
+
+// fetch(link).then(res => {res.text().then(data=> {console.log(data)})})
 
 
 }
@@ -90,6 +99,10 @@ function handlerResult(that, res, handlerSuccess) {
 
 export default function api(that, handlerSuccess=()=>{}) {
 	serverRequest().then((res) => handlerResult(that, res.data, handlerSuccess))
-	// const res = serverRequest()
-	// handlerSuccess(that, res)
+	const res = serverRequest()
+	handlerSuccess(that, res)
+
+	// const link = 'https://weather.api.here.com/weather/1.0/report.json?product=observation&name=Saint-Petersburg&app_id=' + appId + '&app_code=' + appCode + `&jsoncallback=myCallbackFunction`
+	// fetch(link).then(res => {console.log('!');res.text().then(data=> {console.log('!!', data)})})
+
 }

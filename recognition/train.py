@@ -18,6 +18,11 @@ from sklearn.model_selection import train_test_split
 data_train = pd.read_csv('../input/fashion-mnist_train.csv')
 data_test = pd.read_csv('../input/fashion-mnist_test.csv')
 
+# print(data_train.head())
+# print(data_train.shape)
+data_train = data_train[data_train.label != 8]
+# print(data_train.shape)
+
 img_rows, img_cols = 28, 28
 input_shape = (img_rows, img_cols, 1)
 
