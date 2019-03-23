@@ -1,4 +1,7 @@
-button {
+label {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
 	border: 2px solid #20c997;
 	color: #20c997;
 	font-weight: bold;
@@ -9,7 +12,11 @@ button {
 	padding: 15px;
 }
 
-button:hover {
+label:hover {
 	background-color: #20c997;
 	color: #fff;
+}
+
+input {
+	display: none;
 }
