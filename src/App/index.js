@@ -17,6 +17,7 @@ export default class App extends React.Component {
 					lat={ 52.5159 }
 					lng={ 13.3777 }
 					zoom={ 14 }
+					theme={"normal.night"}
 				/>
 				{ getWeather(this) }
 			</div>

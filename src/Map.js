@@ -15,7 +15,7 @@ export default class Map extends React.Component {
 				lng: props.lng,
 			},
 			zoom: props.zoom,
-			// theme: props.theme,
+			theme: props.theme,
 			// style: props.style,
 		}
 	}
@@ -35,24 +35,34 @@ export default class Map extends React.Component {
 			))
 		  }
 
-		this.platform = new window.H.service.Platform(this.state)
+		this.platform = new window.H.service.Platform({
+            app_id: this.props.app_id,
+            app_code: this.props.app_code,
+            // useCIT: true,
+            useHTTPS: true,
+        })
 
-		let layer = this.platform.createDefaultLayers()
+        let pixelRatio = window.devicePixelRatio || 1
+		let layer = this.platform.createDefaultLayers({
+            tileSize: pixelRatio === 1 ? 256 : 512,
+            ppi: pixelRatio === 1 ? undefined : 320
+        })
 		let container = document.getElementById('here-map')
 		container.style = 'height: 100vh'
 
-		this.map = new window.H.Map(container, layer.normal.map, {
+		this.map = new window.H.Map(container, layer.normal.xbase, {
 			center: this.state.center,
-			zoom: this.state.zoom,
+            zoom: this.state.zoom,
+            pixelRatio
 		})
 
 		addCircleToMap(this.map, window.H)
 
-		// let events = new window.H.mapevents.MapEvents(this.map)
-		// // eslint-disable-next-line
-		// let behavior = new window.H.mapevents.Behavior(events)
-		// // eslint-disable-next-line
-		// let ui = new window.H.ui.UI.createDefault(this.map, layer)
+		let events = new window.H.mapevents.MapEvents(this.map)
+		// eslint-disable-next-line
+		let behavior = new window.H.mapevents.Behavior(events)
+		// eslint-disable-next-line
+		let ui = new window.H.ui.UI.createDefault(this.map, layer)
 	}	
 
 	render() {
