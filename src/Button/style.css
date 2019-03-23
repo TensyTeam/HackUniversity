@@ -1,5 +1,4 @@
-label {
-	display: block;
+.btn {
     border: 2px solid #20c997;
     color: #20c997;
     border-radius: 5px;
@@ -7,14 +6,15 @@ label {
     padding: 15px;
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    right: 20px;
 }
 
-label:hover {
+.btn-center {
+    bottom: 20px;
+    right: 160px;
+}
+
+.btn:hover {
 	background-color: #20c997;
 	color: #fff;
-}
-
-input {
-	display: none;
 }
