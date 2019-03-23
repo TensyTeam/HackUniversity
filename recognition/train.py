@@ -53,7 +53,7 @@ X_test /= 255
 X_val /= 255
 batch_size = 256
 num_classes = 6 # 10
-epochs = 30
+epochs = 100 # 30
 
 img_rows, img_cols = 28, 28
 

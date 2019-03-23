@@ -1,17 +1,17 @@
-import axios from 'axios'
+// import axios from 'axios'
 
-import { appId, appCode } from '../keys.js'
+// import { appId, appCode } from '../keys.js'
 // import console = require('console');
 
-import jsonpAdapter from 'axios-jsonp'
+// import jsonpAdapter from 'axios-jsonp'
 import $ from 'jquery'
 
 // function myCallbackFunction(e) {
 // 	console.log(e)
 // }
 
-function serverRequest() {
-	const link = 'https://weather.api.here.com/weather/1.0/report.json?product=observation&name=Saint-Petersburg&app_id=' + appId + '&app_code=' + appCode // + `&jsoncallback=myCallbackFunction`
+function serverRequest(link, method, data) {
+	// const link = 'https://weather.api.here.com/weather/1.0/report.json?product=observation&name=Saint-Petersburg&app_id=' + appId + '&app_code=' + appCode // + `&jsoncallback=myCallbackFunction`
 
 	// let config = {
 	// 	baseURL: 'https://weather.api.here.com/weather/1.0/',
@@ -37,9 +37,9 @@ function serverRequest() {
 
 
 
-	const la = axios.get(link)
-	console.log(la)
-	return la
+	// const la = axios.get(link)
+	// console.log(la)
+	// return la
 
 
 
@@ -62,6 +62,20 @@ function serverRequest() {
 
 // fetch(link).then(res => {res.text().then(data=> {console.log(data)})})
 
+
+
+return new Promise(function(resolve, reject) {
+	$.ajax({
+		url: link,
+		type: method,
+		dataType: 'jsonp',
+		jsonp: 'jsonpcallback',
+		data,
+		success: function (data) {
+			resolve(data)
+		}
+	  })
+})
 
 }
 
@@ -101,8 +115,8 @@ function handlerResult(that, res, handlerSuccess) {
 
 // function myCallbackFunction(res) {console.log(res)}
 
-export default function api(that, handlerSuccess=()=>{}) { // async
-	// serverRequest().then((res) => handlerResult(that, res.data, handlerSuccess))
+export default function api(link, method, data, that, handlerSuccess=()=>{}) { // async
+	serverRequest(link, method, data).then((res) => handlerResult(that, res, handlerSuccess))
 	// const res = serverRequest()
 	// handlerSuccess(that, res)
 	
@@ -141,22 +155,5 @@ export default function api(that, handlerSuccess=()=>{}) { // async
 // 		    console.log('Fetch Error :-S', err);  
 // });	
 
-$.ajax({
-	url: 'https://weather.cit.api.here.com/weather/1.0/report.json',
-	type: 'GET',
-	dataType: 'jsonp',
-	jsonp: 'jsonpcallback',
-	data: {
-	  product: 'observation',
-	  latitude: '52.516',
-	  longitude: '13.389',
-	  oneobservation: 'true',
-	  app_id: appId,
-	  app_code: appCode,
-	},
-	success: function (data) {
-	  alert(JSON.stringify(data));
-	}
-  });
 
 }
