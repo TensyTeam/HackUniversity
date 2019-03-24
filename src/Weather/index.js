@@ -1,16 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
+import { getWeather } from '../func/methods'
 import './style.css'
 
 
 export default class Weather extends React.Component {
 
 	render() {
+		getWeather(this)
+
 		return (
-			<div class="weather_block">
-				{this.props.children}
-			</div>
+			<div className="weather_block" id="weather"></div>
 		)
 	}
 

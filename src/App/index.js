@@ -1,7 +1,6 @@
 import React from 'react'
 
 import {appId, appCode} from '../keys'
-import { getWeather } from '../func/methods'
 import './style.css'
 
 import Map from '../Map'
@@ -14,16 +13,16 @@ import Weather from '../Weather'
 export default class App extends React.Component {
 	state = {
 		maps: false,
-		weather: false
+		weather: true,
 	}
 
 	render() {
 		return (
 			<React.Fragment>
-				<Weather>{this.state.weather === true ? <i class="fas fa-sun"></i> : <i class="fas fa-sun"></i> }</Weather>
+				<Weather />
 				<Tinder />
 				<Add />
-				<Button class="btn btn-center">Го</Button>
+				<div onClick={ this.handlerWin }><Button class="btn btn-center">Го</Button></div>
 				<Button class="btn"><i class="fas fa-suitcase-rolling"></i></Button>
 				{
 					this.state.maps && <Map
@@ -34,10 +33,16 @@ export default class App extends React.Component {
 						zoom={ 14 }
 					/>
 				}
-				{
-					this.state.weather && getWeather(this)
-				}
 			</React.Fragment>
 		)
+	}
+
+	handlerWin = () => {
+		try {
+			document.getElementsByClassName('card_block')[0].style = 'transform: translate3d(0px, 0px, 0px);'
+		} catch {
+			document.getElementById('weather').innerHTML = '<img src="https://memepedia.ru/wp-content/uploads/2019/03/mem-kot-tom-19.jpg">'
+			document.getElementById('weather').style = 'left: 20px;'
+		}
 	}
 }

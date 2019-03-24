@@ -26,6 +26,7 @@ flask/
 # Данные
 
 /input/
+/server/load/
 
 # Авторские права
 

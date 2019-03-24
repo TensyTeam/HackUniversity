@@ -16,6 +16,8 @@ function getWeather(that) {
 
 	const handlerSuccess = (other, res) => {
 		console.log(res)
+		let div = '<img src="' + res.observations.location[0].observation[0].iconLink + '" id="api">' + res.observations.location[0].observation[0].temperature * 10 / 10 + '°C'
+		document.getElementById('weather').innerHTML = div
 	}
 
 	api(link, 'GET', data, that, handlerSuccess)

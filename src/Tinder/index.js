@@ -40,7 +40,6 @@ function Tinder() {
       velocity
     }) => {
       const trigger = velocity > 0.2;
-
       const dir = xDir < 0 ? -1 : 1;
 
       if (!down && trigger) gone.add(index);
@@ -50,6 +49,10 @@ function Tinder() {
         const isGone = gone.has(index);
 
         const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0;
+
+        if (isGone && dir <= 0 && !down) {
+          document.getElementById(i).remove()
+        }
 
         const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0);
 
