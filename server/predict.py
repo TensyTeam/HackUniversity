@@ -29,4 +29,7 @@ def predict(name):
 
 		model = load_model('../model.txt')
 
-		return CATEGORIES[list(map(int, model.predict(pixels)[0])).index(1)]
+		try:
+			return CATEGORIES[list(map(int, model.predict(pixels)[0])).index(1)]
+		except:
+			return 'Не удалось определить категорию!'
