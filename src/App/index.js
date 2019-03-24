@@ -45,6 +45,7 @@ export default class App extends React.Component {
 						zoom={ 11 }
 					/>
 				}
+				<div class="category"></div>
 				<Wardrobe>
 					<div onClick={ this.handlerClose }>
 						<div class="card_content_wardrobe">
