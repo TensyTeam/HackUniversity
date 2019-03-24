@@ -1,18 +1,18 @@
 label {
 	display: block;
-    border: 2px solid #20c997;
-    color: #20c997;
+    border: 2px solid #5352ed;
+    color: #5352ed;
     border-radius: 5px;
     cursor: pointer;
     padding: 15px;
     position: absolute;
-    bottom: 20px;
+    bottom: 60px;
     left: 20px;
     z-index: 60;
 }
 
 label:hover {
-	background-color: #20c997;
+	background-color: #5352ed;
 	color: #fff;
 }
 

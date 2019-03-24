@@ -1,13 +1,12 @@
 .weather_block {
-	display: block;
-    border: 2px solid #20c997;
-    color: #20c997;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 15px;
+    font-weight: 400;
+	color: #1e272e;
     position: absolute;
     top: 20px;
-    left: 150px;
+    left: 85px;
+    width: 200px;
+    text-align: center;
+	z-index: 80;
 }
 
 img#api {
