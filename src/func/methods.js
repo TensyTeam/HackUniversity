@@ -15,7 +15,8 @@ function getWeather(that) {
 
 	const handlerSuccess = (other, res) => {
 		console.log(res)
-		let div = res.observations.location[0].observation[0].temperature + ' °C</br>Ветер: ' + res.observations.location[0].observation[0].windSpeed + ' ' + res.observations.location[0].observation[0].windDescShort + '</br> Влажность: ' + res.observations.location[0].observation[0].humidity  + '%</br>' + res.observations.location[0].observation[0].city
+		let div = '<span class="panel"><div><i class="fas fa-thermometer-half"></i> ' +
+		res.observations.location[0].observation[0].temperature + ' °C </div><div><i class="fas fa-wind"></i> ' + res.observations.location[0].observation[0].windSpeed + ' ' + res.observations.location[0].observation[0].windDescShort + '</div><div><i class="fas fa-tint"></i> ' + res.observations.location[0].observation[0].humidity  + '%</div></span></br><i class="fas fa-location-arrow"></i> ' + res.observations.location[0].observation[0].city
 		document.getElementById('weather').innerHTML = div
 	}
 
