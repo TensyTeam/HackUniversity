@@ -20,7 +20,7 @@ class Card extends React.Component {
             >
                 <div className="card_content">
                     <img src={photo} />
-                    <div className="card_text" >{name + ' ' + type}</div>
+                    <div className="card_text" >{name}</div>
                 </div>
             </animated.div>
         </animated.div>

@@ -72,6 +72,7 @@ export default class Add extends React.Component {
 			body: data,
 			}).then((response) => {
 			response.json().then((body) => {
+				console.log(body)
 				this.setState({ imageURL: `http://localhost:5000/${body.file}` });
 			});
 			});

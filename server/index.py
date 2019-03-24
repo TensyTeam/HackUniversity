@@ -6,10 +6,23 @@ import requests
 import base64
 from flask_cors import CORS
 
+
+
+import sys
+
+from PIL import Image
+# import PIL.ImageOps  
+import numpy as np
+from keras.models import load_model
+
 app = Flask(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 LINK = '0.0.0.0:5000'
+CATEGORIES = (
+			  'футболка', 'джинсы / брюки / штаны', 'кофта', 'платье', 
+			  'куртка / пальто', 'рубашка'
+			  )
 
 # Загрузка изображения
 
@@ -114,10 +127,35 @@ def index():
 
 	n = max_image('load')
 
-	data.save('load/{}.png'.format(n))
+	name = 'load/{}.png'.format(n)
+	data.save(name)
 
 	# load_image(data, 'load', type=None)
 
-	return jsonify({'error': 0})
+	# ML
+
+	with open(name, 'rb') as file:
+		img = Image.open(file).convert('LA')
+		img = img.resize((28, 28))
+		pixels = np.asarray(img, dtype='int32')[:,:,0].reshape((1,-1))
+		# # print(pixels)
+		# pixels = pixels[0]
+		# pixels = [255 - i for i in pixels]
+		# pixels = np.array([pixels])
+		# # print(pixels)
+		pixels = pixels.reshape((-1, 28, 28, 1))
+
+		model = load_model('../model.txt')
+
+		pred = model.predict(pixels)
+		# print(pred)
+		pred = list(map(int, pred[0]))
+		# print(pred)
+		pred = pred.index(1)
+		# print(pred)
+		category = CATEGORIES[pred]
+		# print(category)
+
+		return jsonify({'category': category})
 
 app.run(port=5000)

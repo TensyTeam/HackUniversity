@@ -8,6 +8,7 @@ import Tinder from '../Tinder'
 import Add from '../Add'
 import Button from '../Button'
 import Weather from '../Weather'
+import Wardrobe from '../Wardrobe'
 
 
 export default class App extends React.Component {
@@ -33,6 +34,7 @@ export default class App extends React.Component {
 						zoom={ 14 }
 					/>
 				}
+				{/* <Wardrobe /> */}
 			</React.Fragment>
 		)
 	}
