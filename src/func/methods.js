@@ -7,16 +7,15 @@ function getWeather(that) {
 
 	const data = {
 		product: 'observation',
-		latitude: '52.516',
-		longitude: '13.389',
 		oneobservation: 'true',
 		app_id: appId,
 		app_code: appCode,
+		name: 'Saint-Petersburg'
 	}
 
 	const handlerSuccess = (other, res) => {
 		console.log(res)
-		let div = '<img src="' + res.observations.location[0].observation[0].iconLink + '" id="api">' + res.observations.location[0].observation[0].temperature * 10 / 10 + '°C'
+		let div = '<img src="' + res.observations.location[0].observation[0].iconLink + '" id="api"></br>' + res.observations.location[0].observation[0].temperature + ' °C</br>Ветер: ' + res.observations.location[0].observation[0].windSpeed + ' ' + res.observations.location[0].observation[0].windDescShort + '</br> Влажность: ' + res.observations.location[0].observation[0].humidity  + '%</br>' + res.observations.location[0].observation[0].city
 		document.getElementById('weather').innerHTML = div
 	}
 
