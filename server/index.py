@@ -7,13 +7,14 @@ import base64
 from flask_cors import CORS
 
 
+from predict import predict
+# import sys
 
-import sys
-
-from PIL import Image
-# import PIL.ImageOps  
-import numpy as np
-from keras.models import load_model
+# from PIL import Image
+# # import PIL.ImageOps  
+# import numpy as np
+# import keras
+# from keras.models import load_model
 
 app = Flask(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
@@ -134,28 +135,35 @@ def index():
 
 	# ML
 
-	with open(name, 'rb') as file:
-		img = Image.open(file).convert('LA')
-		img = img.resize((28, 28))
-		pixels = np.asarray(img, dtype='int32')[:,:,0].reshape((1,-1))
-		# # print(pixels)
-		# pixels = pixels[0]
-		# pixels = [255 - i for i in pixels]
-		# pixels = np.array([pixels])
-		# # print(pixels)
-		pixels = pixels.reshape((-1, 28, 28, 1))
 
-		model = load_model('../model.txt')
+	return jsonify({'category': predict(name)})
+	# keras.backend.clear_session() 
+	# with open(name, 'rb') as file:
+	# 	img = Image.open(file).convert('LA')
+	# 	img = img.resize((28, 28))
+	# 	pixels = np.asarray(img, dtype='int32')[:,:,0].reshape((1,-1))
+	# 	# # print(pixels)
+	# 	# pixels = pixels[0]
+	# 	# pixels = [255 - i for i in pixels]
+	# 	# pixels = np.array([pixels])
+	# 	# # print(pixels)
+	# 	pixels = pixels.reshape((-1, 28, 28, 1))
 
-		pred = model.predict(pixels)
-		# print(pred)
-		pred = list(map(int, pred[0]))
-		# print(pred)
-		pred = pred.index(1)
-		# print(pred)
-		category = CATEGORIES[pred]
-		# print(category)
+	# 	model = load_model('../model.txt')
 
-		return jsonify({'category': category})
+	# 	pred = model.predict(pixels)
+	# 	# print(pred)
+	# 	pred = list(map(int, pred[0]))
+	# 	# print(pred)
+	# 	if pred in CATEGORIES:
+	# 		# print(pred)
+	# 		pred = pred.index(1)
+	# 		category = CATEGORIES[pred]
+	# 		# print(category)
 
-app.run(port=5000)
+	# 		return jsonify({'category': category})
+		
+	# 	else:
+	# 		return jsonify({'category': None})
+
+app.run('0.0.0.0', port=5000)
