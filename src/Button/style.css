@@ -24,3 +24,10 @@
 .btn-wardrobe {
     right: 78px;
 }
+
+.close {
+    bottom: 20px;
+    right: 140px;
+    position: unset;
+    margin: 20px;
+}
