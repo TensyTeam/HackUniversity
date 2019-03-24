@@ -6,7 +6,7 @@ import Card from "./Card";
 import { objs } from "./arrayCard";
 import "./Card.css";
 
-const cards = [1, 2, 3, 4, 5];
+const cards = [1, 2, 3, 4 ];
 
 const to = i => ({
   x: 0,

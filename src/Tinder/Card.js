@@ -4,7 +4,7 @@ import { animated, interpolate } from "react-spring/hooks";
 class Card extends React.Component {
   render() {
     const { i, x, y, rot, scale, trans, bind, objs } = this.props;
-    const { photo, name, type } = objs[i];
+    const { photo, name, type, photo_pair } = objs[i];
 
     return (
         <animated.div
@@ -19,8 +19,8 @@ class Card extends React.Component {
               style={{ transform: interpolate([rot, scale], trans) }}
             >
                 <div className="card_content">
-                    <img src={photo} />
-                    <div className="card_text" >{name}</div>
+                    <img class="above" src={photo} />
+                    <img class="under" src={photo_pair} />
                 </div>
             </animated.div>
         </animated.div>
