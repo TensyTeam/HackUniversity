@@ -21,19 +21,6 @@ export default class Map extends React.Component {
 	}
 
 	componentDidMount() {
-		function addCircleToMap(map, H){
-			map.addObject(new H.map.Circle(
-			  {lat:52.5159, lng:13.3777},
-			  1000,
-			  {
-				style: {
-				  strokeColor: 'rgba(55, 85, 170, 0.6)',
-				  lineWidth: 2,
-				  fillColor: 'rgba(0, 128, 0, 0.7)',
-				}
-			  }
-			))
-		  }
 
 		this.platform = new window.H.service.Platform({
             app_id: this.props.app_id,
@@ -56,14 +43,7 @@ export default class Map extends React.Component {
             pixelRatio
 		})
 
-		addCircleToMap(this.map, window.H)
-
-		let events = new window.H.mapevents.MapEvents(this.map)
-		// eslint-disable-next-line
-		let behavior = new window.H.mapevents.Behavior(events)
-		// eslint-disable-next-line
-		let ui = new window.H.ui.UI.createDefault(this.map, layer)
-	}	
+	}
 
 	render() {
 		return (

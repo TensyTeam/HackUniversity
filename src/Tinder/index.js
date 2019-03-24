@@ -6,7 +6,7 @@ import Card from "./Card";
 import { objs } from "./arrayCard";
 import "./Card.css";
 
-const cards = [1, 2, 3, 4];
+const cards = [1, 2, 3, 4, 5];
 
 const to = i => ({
   x: 0,
@@ -22,10 +22,10 @@ const trans = (r, s) =>
     10}deg) rotateZ(${r}deg) scale(${s})`;
 
 
-function Tinder() {
+function Tinder(props) {
   const [gone] = useState(() => new Set());
 
-  const [props, set] = useSprings(cards.length, i => ({
+  const [propss, set] = useSprings(cards.length, i => ({
     ...to(i),
     from: from(i)
   }));
@@ -44,6 +44,7 @@ function Tinder() {
 
       if (!down && trigger) gone.add(index);
 
+
       set(i => {
         if (index !== i) return;
         const isGone = gone.has(index);
@@ -53,6 +54,7 @@ function Tinder() {
         if (isGone && dir <= 0 && !down) {
           document.getElementById(i).remove()
         }
+
 
         const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0);
 
@@ -71,7 +73,7 @@ function Tinder() {
     }
   );
 
-  return props.map(({ x, y, rot, scale }, i) => (
+  return propss.map(({ x, y, rot, scale }, i) => (
     <Card
       i={i}
       x={x}

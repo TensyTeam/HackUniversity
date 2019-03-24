@@ -1,6 +1,6 @@
-#wardrobe {
+#bag {
     display: none;
-    z-index: 90;
+    z-index: 100;
     position: absolute;
     background-color: #bdc3c7;
     width: 100%;
