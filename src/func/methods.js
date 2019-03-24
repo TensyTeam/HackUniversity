@@ -15,7 +15,7 @@ function getWeather(that) {
 
 	const handlerSuccess = (other, res) => {
 		console.log(res)
-		let div = '<img src="' + res.observations.location[0].observation[0].iconLink + '" id="api"></br>' + res.observations.location[0].observation[0].temperature + ' °C</br>Ветер: ' + res.observations.location[0].observation[0].windSpeed + ' ' + res.observations.location[0].observation[0].windDescShort + '</br> Влажность: ' + res.observations.location[0].observation[0].humidity  + '%</br>' + res.observations.location[0].observation[0].city
+		let div = res.observations.location[0].observation[0].temperature + ' °C</br>Ветер: ' + res.observations.location[0].observation[0].windSpeed + ' ' + res.observations.location[0].observation[0].windDescShort + '</br> Влажность: ' + res.observations.location[0].observation[0].humidity  + '%</br>' + res.observations.location[0].observation[0].city
 		document.getElementById('weather').innerHTML = div
 	}
 
