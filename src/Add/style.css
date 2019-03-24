@@ -6,7 +6,7 @@ label {
     cursor: pointer;
     padding: 15px;
     position: absolute;
-    bottom: 60px;
+    bottom: 30px;
     left: 20px;
     z-index: 60;
 }

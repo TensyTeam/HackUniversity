@@ -11,6 +11,7 @@ body {
 
 #root {
     background: #dfe6e9;
+    background-size: cover;
     position: fixed;
     overflow: hidden;
     width: 100%;
@@ -20,7 +21,7 @@ body {
 #root .card_block {
     position: absolute;
     width: 100vw;
-    height: 103vh;
+    height: 105vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +50,7 @@ body {
 
 .card img {
     height: auto;
-    width: 289px;
+    width: 250px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }

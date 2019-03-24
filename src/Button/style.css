@@ -5,15 +5,15 @@
     cursor: pointer;
     padding: 15px;
     position: absolute;
-    bottom: 60px;
+    bottom: 30px;
     right: 20px;
     z-index: 60;
     color: #fff;
 }
 
 .btn-center {
-    bottom: 60px;
-    right: 145px;
+    bottom: 30px;
+    right: 120px;
 }
 
 .btn:hover {
@@ -22,7 +22,7 @@
 }
 
 .btn-wardrobe {
-    right: 78px;
+    right: 20px;
 }
 
 .close {
@@ -30,4 +30,10 @@
     right: 140px;
     position: unset;
     margin: 20px;
+}
+
+.panel {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }
