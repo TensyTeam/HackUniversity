@@ -72,8 +72,9 @@ export default class Add extends React.Component {
 			body: data,
 			}).then((response) => {
 			response.json().then((body) => {
-				document.getElementById('category').innerHTML = body.category;
-				console.log(body.category)
+				// document.getElementById('category').innerHTML = body.category;
+				// console.log(body.category)
+				alert(body.category)
 				this.setState({ imageURL: `http://localhost:5000/${body.file}` });
 			});
 			});

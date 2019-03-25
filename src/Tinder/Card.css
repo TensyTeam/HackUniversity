@@ -21,7 +21,7 @@ body {
 #root .card_block {
     position: absolute;
     width: 100vw;
-    height: 105vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +57,7 @@ body {
 
 .card_content {
     max-width: 190px;
-    max-height: 430px;
+    max-height: 400px;
 }
 
 .under {

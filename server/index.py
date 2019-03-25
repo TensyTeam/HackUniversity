@@ -7,6 +7,7 @@ import base64
 from flask_cors import CORS
 
 
+# from pred import predict
 from predict import predict
 # import sys
 
