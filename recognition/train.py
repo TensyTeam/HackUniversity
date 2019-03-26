@@ -6,7 +6,7 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers.normalization import BatchNormalization
 from subprocess import check_output
-print(check_output(["ls", "../input"]).decode("utf8"))
+print(check_output(["ls", "input"]).decode("utf8"))
 from keras.utils import to_categorical
 import numpy as np
 import pandas as pd
@@ -15,8 +15,8 @@ from keras.utils import to_categorical
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-data_train = pd.read_csv('../input/fashion-mnist_train.csv')
-data_test = pd.read_csv('../input/fashion-mnist_test.csv')
+data_train = pd.read_csv('input/fashion-mnist_train.csv')
+data_test = pd.read_csv('input/fashion-mnist_test.csv')
 
 print(data_train.shape)
 data_train = data_train[(data_train.label != 5) & (data_train.label != 7) & (data_train.label != 8) & (data_train.label != 9)]

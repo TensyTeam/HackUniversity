@@ -1,7 +1,7 @@
 import React from 'react'
-// import axios from 'axios'
 
 // import { postImage } from '../func/methods'
+import { linkServer } from '../keys'
 import './style.css'
 
 
@@ -55,28 +55,20 @@ export default class Add extends React.Component {
 
 		reader.onloadend = () => {
 			// console.log(reader.result)
-
 			// const fil = dataURLtoFile(reader.result, 're.jpg')
-
-			// axios.post('http://0.0.0.0:5000/', {data: reader.result}).then((res) => {
-			// 	console.log(res)
-			// })
-
 
 			const data = new FormData();
 			data.append('file', file);
 			// data.append('filename', this.fileName.value);
 
-			fetch('http://localhost:5000/', {
-			method: 'POST',
-			body: data,
+			fetch(linkServer, {
+				method: 'POST',
+				body: data,
 			}).then((response) => {
-			response.json().then((body) => {
-				// document.getElementById('category').innerHTML = body.category;
-				// console.log(body.category)
-				alert(body.category)
-				this.setState({ imageURL: `http://localhost:5000/${body.file}` });
-			});
+				response.json().then((body) => {
+					alert(body.category)
+					this.setState({ imageURL: `{ linkServer }${ body.file }` });
+				});
 			});
 
 			// postImage(this, reader.result)

@@ -1,8 +1,8 @@
 import api from './api'
-import { appId, appCode } from '../keys'
+import { appId, appCode, linkServer } from '../keys'
 
 
-function getWeather(that) {
+export function getWeather(that) {
 	const link = 'https://weather.cit.api.here.com/weather/1.0/report.json'
 
 	const data = {
@@ -23,18 +23,14 @@ function getWeather(that) {
 	api(link, 'GET', data, that, handlerSuccess)
 }
 
-function postImage(that, data) {
-	const link = 'http://0.0.0.0:5000/'
+// export function postImage(that, data) {
+// 	const req = {
+// 		data
+// 	}
 
-	const req = {
-		data
-	}
+// 	const handlerSuccess = (other, res) => {
+// 		console.log(res)
+// 	}
 
-	const handlerSuccess = (other, res) => {
-		console.log(res)
-	}
-
-	api(link, 'POST', req, that, handlerSuccess)
-}
-
-export { getWeather, postImage }
+// 	api(linkServer, 'POST', req, that, handlerSuccess)
+// }

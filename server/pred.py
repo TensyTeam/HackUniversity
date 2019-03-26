@@ -6,6 +6,7 @@ import json
 
 
 def predict(name):
+	# Загрузка изображения
 
 	cloudinary.config( 
 		cloud_name='dprectwav',
@@ -17,28 +18,17 @@ def predict(name):
 
 	print(res['url'])
 
-	# import requests
-	# link = 'https://api.mirrorthatlook.com/v2/classify?image={}'.format(res['url'])
-	# print(link)
-	# res = requests.get(link).text
-
-	# print(res)
-
-
-
+	# API
 
 	headers = {
-		# Request headers
 		'Ocp-Apim-Subscription-Key': '',
 		'Ocp-Apim-Subscription-Key': '7c46c41c9ef4484b942c48b5fb1de880',
 	}
 
 	params = urllib.parse.urlencode({
-		# Request parameters
 		'image': res['url'],
 	})
 
-	data = None
 	try:
 		conn = http.client.HTTPSConnection('api.mirrorthatlook.com')
 		conn.request("GET", "/v2/classify?%s" % params, "", headers)
@@ -46,16 +36,11 @@ def predict(name):
 		data = response.read()
 
 		conn.close()
+
+		res = json.loads(data)
+		return res['result'][0]['label']
+
 	except Exception as e:
 		print("[Errno {0}] {1}".format(e.errno, e.strerror))
-
-	####################################
-
-
-	if data:
-		res = json.loads(data)
-
-
-		return res['result'][0]['label']
 	
 	return 'Не удалось определить категорию'

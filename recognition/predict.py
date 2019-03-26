@@ -12,7 +12,7 @@ CATEGORIES = (
 			  'ботинки / кроссовки', 'сумка', 'высокая обувь'
 			  )
 
-with open('../input/{}.jpg'.format(sys.argv[1]), 'rb') as file:
+with open('../test/{}.jpg'.format(sys.argv[1]), 'rb') as file:
 	img = Image.open(file).convert('LA')
 	# img = PIL.ImageOps.invert(img)
 	# img.show()

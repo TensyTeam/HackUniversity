@@ -1,6 +1,5 @@
-
 from PIL import Image
-# import PIL.ImageOps  
+# import PIL.ImageOps
 import numpy as np
 import keras
 from keras.models import load_model
@@ -19,9 +18,8 @@ def predict(name):
 		# img = PIL.ImageOps.invert(img)
 		# img.show()
 		img = img.resize((28, 28))
+
 		pixels = np.asarray(img)[:,:,0].reshape((1,-1))
-		# # print(pixels)
-		# pixels = pixels[0]
 		# pixels = [255 - i for i in pixels]
 		# pixels = np.array([pixels])
 		# # print(pixels)

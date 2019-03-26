@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {appId, appCode} from '../keys'
+import { appId, appCode, geoLat, geoLng } from '../keys'
 import './style.css'
 
 import Map from '../Map'
@@ -16,8 +16,7 @@ export default class App extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			maps: true,
-			weather: true,
+			maps: false,
 		}
 	}
 
@@ -35,13 +34,14 @@ export default class App extends React.Component {
 				{/*
 				<div onClick={ this.handlerOpenBag }>
 					<Button class="btn"><i class="fas fa-suitcase-rolling"></i></Button>
-				</div>*/}
+				</div>
+				*/}
 				{
-					!this.state.maps && <Map
+					this.state.maps && <Map
 						app_id={ appId }
 						app_code={ appCode }
-						lat={ 59.9392 }
-						lng={ 30.3165 }
+						lat={ geoLat }
+						lng={ geoLng }
 						zoom={ 11 }
 					/>
 				}
@@ -50,35 +50,37 @@ export default class App extends React.Component {
 					<div onClick={ this.handlerClose }>
 						<div class="card_content_wardrobe">
 							<div class="card_text_wardrobe" >Кофта</div>
-		                    <img src="https://i.ibb.co/sHNmPt5/q2.jpg" />
+		                    <img src="/wardrobe/1.jpg" />
 		                </div>
 						<div class="card_content_wardrobe">
 							<div class="card_text_wardrobe" >Кофта</div>
-		                    <img src="https://i.ibb.co/54BSy1v/photo-2019-03-24-06-34-27.jpg" />
+		                    <img src="/wardrobe/2.jpg" />
 		                </div>
 						<div class="card_content_wardrobe">
 							<div class="card_text_wardrobe" >Футболка</div>
-		                    <img src="https://i.ibb.co/C73Bnx0/photo-2019-03-24-06-34-42.jpg" />
+		                    <img src="/wardrobe/3.jpg" />
 		                </div>
 						<div class="card_content_wardrobe">
 							<div class="card_text_wardrobe" >Куртка</div>
-		                    <img src="https://i.ibb.co/JmDkyGs/photo-2019-03-24-06-34-19.jpg" />
+		                    <img src="/wardrobe/4.jpg" />
 		                </div>
 						<div class="card_content_wardrobe">
 							<div class="card_text_wardrobe" >Кофта</div>
-		                    <img src="https://i.ibb.co/sHNmPt5/q2.jpg" />
+		                    <img src="/wardrobe/5.jpg" />
 		                </div>
 						<Button class="btn btn-wardrobe close" >Закрыть</Button>
 					</div>
 				</Wardrobe>
 
-				{/*<Bag>
+				{/*
+				<Bag>
 					<input type="data" placeholder="Введите дату"/>
 					<input type="data" placeholder="Введите дату"/>
 					<input type="data" placeholder="Введите дату"/>
 					<input type="data" placeholder="Введите дату"/>
 					<input type="data" placeholder="Введите дату"/>
-				</Bag>*/}
+				</Bag>
+				*/}
 			</React.Fragment>
 		)
 	}
@@ -95,7 +97,7 @@ export default class App extends React.Component {
 				}
 			}
 		} catch {
-			document.getElementById('weather').innerHTML = '<img height=200px width=330px src="https://memepedia.ru/wp-content/uploads/2019/03/mem-kot-tom-19.jpg">'
+			document.getElementById('weather').innerHTML = '<img height=200px width=330px src="/error.jpg">'
 			document.getElementById('weather').style = 'left: 20px;'
 		}
 	}
